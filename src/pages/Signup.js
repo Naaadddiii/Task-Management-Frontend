@@ -11,7 +11,7 @@ const Signup = () => {
     try {
       await AuthService.signup(email, password);
       alert("User registered successfully");
-      navigate("/sign-in");
+      navigate("/");
     } catch (error) {
       console.error("Registration failed", error.message);
     }

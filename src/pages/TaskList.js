@@ -25,7 +25,7 @@ const TaskList = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (!token) navigate("/sign-in");
+    if (!token) navigate("/");
   }, [token, navigate]);
 
   const fetchTasks = async () => {
