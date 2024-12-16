@@ -1,8 +1,11 @@
 const fetchTasks = async (token) => {
   try {
-    const response = await fetch(`${process.env.BACKEND_URL}/api/tasks`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await fetch(
+      `https://task-management-backend-nc44.onrender.com/api/tasks`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     if (!response.ok) throw new Error("Failed to fetch tasks");
     const data = await response.json();
     return data;
@@ -15,7 +18,7 @@ const fetchTasks = async (token) => {
 const fetchTaskDetails = async (taskId, token) => {
   try {
     const response = await fetch(
-      `${process.env.BACKEND_URL}/api/tasks/${taskId}`,
+      `https://task-management-backend-nc44.onrender.com/api/tasks/${taskId}`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
     if (!response.ok) throw new Error("Failed to fetch task details");
@@ -30,7 +33,7 @@ const fetchTaskDetails = async (taskId, token) => {
 const deleteTask = async (taskId, token) => {
   try {
     const response = await fetch(
-      `${process.env.BACKEND_URL}/api/tasks/${taskId}`,
+      `https://task-management-backend-nc44.onrender.com/api/tasks/${taskId}`,
       {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
@@ -45,14 +48,17 @@ const deleteTask = async (taskId, token) => {
 
 const addTask = async (newTask, token) => {
   try {
-    const response = await fetch(`${process.env.BACKEND_URL}/api/tasks`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(newTask),
-    });
+    const response = await fetch(
+      `https://task-management-backend-nc44.onrender.com/api/tasks`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(newTask),
+      }
+    );
     if (!response.ok) throw new Error("Failed to add task");
 
     const result = await response.json();
@@ -66,7 +72,7 @@ const addTask = async (newTask, token) => {
 const updateTask = async (taskId, updatedTask, token) => {
   try {
     const response = await fetch(
-      `${process.env.BACKEND_URL}/api/tasks/${taskId}`,
+      `https://task-management-backend-nc44.onrender.com/api/tasks/${taskId}`,
       {
         method: "PUT",
         headers: {
